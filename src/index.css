@@ -1,20 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
 
+:root {
+  --main-color: rgba(137, 82, 61, 0.6);
+  --primary: rgb(102, 52, 239);
+  --dark: rgb(33, 33, 33);
+  --typo: 'Hind Siliguri', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: all ease-in-out 250ms;
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: var(--typo);
+  color: var(--dark);
 }
 
 #root {
   width: 60vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
   margin-left: auto;
   margin-right: auto;
-  background-color: aquamarine;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,6 +31,7 @@
 /* Header */
 header {
   width: 100%;
+  background-color: rgba(var(--primary), 0.75);
 }
 
 header nav {
@@ -41,17 +49,129 @@ header nav svg {
 /* Board */
 main {
   flex: 1;
-  width: 100%;
-  background-color: blueviolet;
-  border: 1px dashed #000;
+  display: flex;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--main-color);
+  background-image: url("./background.png");
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main ul {
+  display: flex;
+  margin: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.row-board {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.small-hole {
+  display: block;
+  background-color: var(--dark);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.hole,
+.solution-hole,
+.pins {
+  display: block;
+  background-color: var(--dark);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.solution {
+  align-self: flex-end;
+}
+
+.solution-hole {
+  background-color: #666;
+  color: #ddd;
+}
+
+.pins {
+  cursor: grab;
+
+}
+
+.pin-white {
+  background-image: radial-gradient(circle at 100px 100px, grey, white);
+}
+
+.pin-blue {
+  background-image: radial-gradient(circle at 100px 100px, white, blue);
+}
+
+.pin-green {
+  background-image: radial-gradient(circle at 100px 100px, white, green);
+}
+
+.pin-red {
+  background-image: radial-gradient(circle at 100px 100px, white, red);
+}
+
+.pin-yellow {
+  background-image: radial-gradient(circle at 100px 100px, white, yellow);
+}
+
+.pin-black {
+  background-image: radial-gradient(circle at 100px 100px, white, black);
+}
+
+.pin-brown {
+  background-image: radial-gradient(circle at 100px 100px, white, SaddleBrown);
+}
+
+.pin-orange {
+  background-image: radial-gradient(circle at 100px 100px, white, orange);
 }
 
 /* Footer */
 footer {
   font-size: 90%;
   align-self: flex-end;
+
 }
 
 footer a {
-  margin-left: 0.5rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+footer a {
+  position: relative;
+  z-index: 1;
+}
+
+footer a::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: -0.25em;
+  right: -0.25em;
+  background-color: rgba(102, 52, 239, 0.75);
+  transform-origin: center right;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+footer a:hover::before {
+  transform: scaleX(1);
+  transform-origin: center left;
 }
