@@ -14,6 +14,7 @@
   transition: all ease-in-out 250ms;
   font-family: var(--typo);
   color: var(--dark);
+  user-select: none;
 }
 
 #root {
@@ -76,7 +77,8 @@ main ul {
 
 .small-hole {
   display: block;
-  background-color: var(--dark);
+  border: 2px solid var(--dark);
+  background-color: rgba(0, 0, 0, 0.2);
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -86,10 +88,11 @@ main ul {
 .solution-hole,
 .pins {
   display: block;
-  background-color: var(--dark);
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  border: 2px solid var(--dark);
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   border-radius: 50%;
   text-align: center;
 }
@@ -105,46 +108,25 @@ main ul {
 
 .pins {
   cursor: grab;
-
+  border: 0;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.pin-white {
-  background-image: radial-gradient(circle at 100px 100px, grey, white);
+.pins:active {
+  cursor: grabbing;
 }
 
-.pin-blue {
-  background-image: radial-gradient(circle at 100px 100px, white, blue);
+.invisible {
+  visibility: hidden;
 }
 
-.pin-green {
-  background-image: radial-gradient(circle at 100px 100px, white, green);
-}
-
-.pin-red {
-  background-image: radial-gradient(circle at 100px 100px, white, red);
-}
-
-.pin-yellow {
-  background-image: radial-gradient(circle at 100px 100px, white, yellow);
-}
-
-.pin-black {
-  background-image: radial-gradient(circle at 100px 100px, white, black);
-}
-
-.pin-brown {
-  background-image: radial-gradient(circle at 100px 100px, white, SaddleBrown);
-}
-
-.pin-orange {
-  background-image: radial-gradient(circle at 100px 100px, white, orange);
+.disabled {
+  pointer-events: none;
 }
 
 /* Footer */
 footer {
   font-size: 90%;
-  align-self: flex-end;
-
 }
 
 footer a {
@@ -152,26 +134,6 @@ footer a {
   text-decoration: none;
 }
 
-footer a {
-  position: relative;
-  z-index: 1;
-}
-
-footer a::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: -0.25em;
-  right: -0.25em;
-  background-color: rgba(102, 52, 239, 0.75);
-  transform-origin: center right;
-  transform: scaleX(0);
-  transition: transform 0.2s ease-in-out;
-}
-
-footer a:hover::before {
-  transform: scaleX(1);
-  transform-origin: center left;
+footer a:hover {
+  text-decoration: underline;
 }
