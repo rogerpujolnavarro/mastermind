@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
-import { FiHelpCircle } from 'react-icons/fi';
-import PinContext from '../contexts/PinContext';
+// react
+import { useContext } from 'react';
+// components
+import Pins from './Pins';
+import Solution from './Solution';
+import TableRow from './TableRow';
+// contexts
 import AttemptContext from '../contexts/AttemptContext';
-import ColorContext from '../contexts/ColorsContext';
 
 const Board = () => {
-	const { attempt, totalAttempts, totalColumns, onChangeAttempt } = useContext(AttemptContext);
-	const { onChangePin, targetHoles } = useContext(PinContext);
-	const { colors } = useContext(ColorContext);
+	const { totalAttempts, totalColumns } = useContext(AttemptContext);
 
 	let board = [];
 	for (let currentRow = 0; currentRow < totalAttempts; currentRow++) {
@@ -17,74 +18,19 @@ const Board = () => {
 		}
 		board = [...board, row];
 	}
-
-	const createGradient = (color) => {
-		return `radial-gradient(circle at 100px 100px, white 40%, ${color})`;
-	};
-
 	return (
 		<main>
 			<ul className="solution">
-				{board[0].map((box) => (
-					<li key={box} className="solution-hole">
-						<FiHelpCircle />
-					</li>
+				{board[0].map((id) => (
+					<Solution key={`solution-${id}`} id={id} />
 				))}
 				<button className="invisible disabled">check</button>
 			</ul>
 			{board.reverse().map((row, index) => (
-				<div key={`div-${index}`} className="row-board">
-					<ul key={`solution-${index}`}>
-						{row.map((n) => (
-							<li key={`small-${n}`} className="small-hole"></li>
-						))}
-					</ul>
-					<ul key={`game-${index}`}>
-						{row.map((n) => (
-							<li
-								key={`big-${n}`}
-								className={`${
-									totalAttempts - attempt === index ? '' : 'disabled'
-								} hole`}
-								style={{
-									backgroundImage: targetHoles.filter(
-										(hole) => hole.position === n + 1
-									).length
-										? createGradient(
-												targetHoles.filter(
-													(hole) => hole.position === n + 1
-												)[0].color
-										  )
-										: 'none',
-								}}
-								onClick={() => {
-									onChangePin(false, n + 1);
-								}}
-							></li>
-						))}
-						<button
-							className={`${totalAttempts - attempt > index ? 'invisible' : ''} ${
-								targetHoles.length === attempt * totalColumns ? '' : 'disabled'
-							}`}
-							onClick={onChangeAttempt}
-						>
-							check
-						</button>
-					</ul>
-				</div>
+				<TableRow key={`table-${index}`} row={row} indexRow={index} />
 			))}
 			<ul className="pin-board">
-				{colors.map((color) => (
-					<li
-						key={color}
-						className="pins"
-						style={{
-							backgroundImage: createGradient(color),
-						}}
-						onClick={() => onChangePin(color, false)}
-						draggable
-					></li>
-				))}
+				<Pins />
 			</ul>
 		</main>
 	);
