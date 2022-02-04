@@ -29,6 +29,22 @@
   align-items: center;
 }
 
+.invisible {
+  opacity: 0;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.d-none {
+  display: none !important;
+}
+
+button.disabled {
+  background-color: red;
+}
+
 /* Header */
 header {
   width: 100%;
@@ -60,6 +76,7 @@ main {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 main ul {
@@ -75,18 +92,17 @@ main ul {
   gap: 1rem;
 }
 
-.small-hole {
-  display: block;
-  border: 2px solid var(--dark);
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
+.pin-board {
+  width: 50%;
+  align-self: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .hole,
 .solution-hole,
 .pins {
+  cursor: pointer;
   display: block;
   border: 2px solid var(--dark);
   background-color: rgba(0, 0, 0, 0.2);
@@ -97,31 +113,38 @@ main ul {
   text-align: center;
 }
 
+.answer-hole {
+  display: block;
+  border: 2px solid var(--dark);
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
 .solution {
   align-self: flex-end;
+  flex: 1;
 }
 
 .solution-hole {
+  cursor: auto;
   background-color: #666;
   color: #ddd;
 }
 
 .pins {
-  cursor: grab;
+  cursor: pointer;
   border: 0;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.pins:active {
-  cursor: grabbing;
+.answer-hole.positionOk {
+  background-color: black;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
-.disabled {
-  pointer-events: none;
+.answer-hole.colorOk {
+  background-color: white;
 }
 
 /* Footer */

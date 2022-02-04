@@ -18,6 +18,7 @@ const Board = () => {
 		}
 		board = [...board, row];
 	}
+
 	return (
 		<main>
 			<ul className="solution">
@@ -26,7 +27,7 @@ const Board = () => {
 				))}
 				<button className="invisible disabled">check</button>
 			</ul>
-			{board.reverse().map((row, index) => (
+			{board.map((row, index) => (
 				<TableRow key={`table-${index}`} row={row} indexRow={index} />
 			))}
 			<ul className="pin-board">

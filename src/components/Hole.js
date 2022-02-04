@@ -11,7 +11,7 @@ const Hole = ({ indexRow, position }) => {
 	const { onChangePin, targetHoles } = useContext(PinContext);
 	return (
 		<li
-			className={`${totalAttempts - attempt === indexRow ? '' : 'disabled'} hole`}
+			className={`hole${totalAttempts - attempt === indexRow ? '' : ' disabled'}`}
 			style={{
 				backgroundImage: targetHoles.filter((hole) => hole.position === position).length
 					? createGradient(
