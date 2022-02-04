@@ -38,6 +38,10 @@ function App() {
 		console.log(solution);
 	}, [solution]);
 
+	useEffect(() => {
+		attempt === 0 && showResult();
+	}, [attempt]);
+
 	const changePin = (color, position) => {
 		position &&
 			setTargetHoles([
@@ -98,6 +102,15 @@ function App() {
 		checkAttempt(attempt) ? showResult() : setAttempt(attempt - 1);
 	};
 
+	const newGame = () => {
+		setActivePin(false);
+		setTargetHoles([]);
+		setAnswerHoles([]);
+		setAttempt(totalAttempts);
+		setEndGame(false);
+		setSolution(createCombination);
+	};
+
 	return (
 		<PinContext.Provider
 			value={{
@@ -116,7 +129,9 @@ function App() {
 					onChangeAttempt: changeAttempt,
 				}}
 			>
-				<SolutionContext.Provider value={{ solution: solution, showSolution: endGame }}>
+				<SolutionContext.Provider
+					value={{ solution: solution, showSolution: endGame, onNewGame: newGame }}
+				>
 					<ColorContext.Provider value={{ colors: colors }}>
 						<Header />
 						<Board />

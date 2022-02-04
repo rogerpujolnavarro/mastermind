@@ -6,9 +6,11 @@ import Solution from './Solution';
 import TableRow from './TableRow';
 // contexts
 import AttemptContext from '../contexts/AttemptContext';
+import SolutionContext from '../contexts/SolutionContext';
 
 const Board = () => {
 	const { totalAttempts, totalColumns } = useContext(AttemptContext);
+	const { onNewGame } = useContext(SolutionContext);
 
 	let board = [];
 	for (let currentRow = 0; currentRow < totalAttempts; currentRow++) {
@@ -21,12 +23,17 @@ const Board = () => {
 
 	return (
 		<main>
-			<ul className="solution">
-				{board[0].map((id) => (
-					<Solution key={`solution-${id}`} id={id} />
-				))}
-				<button className="invisible disabled">check</button>
-			</ul>
+			<div className="solution">
+				<ul>
+					{board[0].map((id) => (
+						<Solution key={`solution-${id}`} id={id} />
+					))}
+					<button className="" onClick={onNewGame}>
+						new
+					</button>
+				</ul>
+			</div>
+
 			{board.map((row, index) => (
 				<TableRow key={`table-${index}`} row={row} indexRow={index} />
 			))}

@@ -4,6 +4,7 @@
   --main-color: rgba(137, 82, 61, 0.6);
   --primary: rgb(102, 52, 239);
   --dark: rgb(33, 33, 33);
+  --light: rgb(238, 224, 224);
   --typo: 'Hind Siliguri', sans-serif;
 }
 
@@ -41,8 +42,26 @@
   display: none !important;
 }
 
+
+
+button {
+  background-color: var(--primary);
+  color: var(--light);
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  padding: 0.25rem;
+  outline: 0;
+  box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+button:active {
+  transform: translate(0.15rem, 0.15rem);
+  transition: none;
+}
+
 button.disabled {
-  background-color: red;
+  opacity: 0.6;
 }
 
 /* Header */
@@ -93,7 +112,6 @@ main ul {
 }
 
 .pin-board {
-  width: 50%;
   align-self: center;
   flex-wrap: wrap;
   margin-top: 1rem;
@@ -123,14 +141,18 @@ main ul {
 }
 
 .solution {
-  align-self: flex-end;
+  align-self: center;
   flex: 1;
+}
+
+.solution ul {
+  padding: 0.5rem;
+  border: 2px solid #000;
 }
 
 .solution-hole {
   cursor: auto;
-  background-color: #666;
-  color: #ddd;
+  background-image: radial-gradient(circle at 100px 100px, white 40%, gray);
 }
 
 .pins {
