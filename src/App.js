@@ -8,6 +8,7 @@ import Header from './components/Header';
 import AttemptContext from './contexts/AttemptContext';
 import ColorContext from './contexts/ColorsContext';
 import PinContext from './contexts/PinContext';
+import SolutionContext from './contexts/SolutionContext';
 
 function App() {
 	const totalAttempts = 12;
@@ -27,6 +28,7 @@ function App() {
 		return newCombination;
 	};
 	const [solution, setSolution] = useState(createCombination);
+	const [endGame, setEndGame] = useState(false);
 
 	// useEffect(() => {
 	// 	console.log(answerHoles);
@@ -56,8 +58,10 @@ function App() {
 		// taula dels colors preguntats acotada segons els indexs, oredenada
 		const askedColors = targetHoles
 			.filter(({ position }) => position >= firstIndex && position <= lastIndex)
-			.map((target) => target.color)
-			.sort((target1, target2) => target1.position - target2.position);
+			.sort((target1, target2) => target1.position - target2.position)
+			.map((target) => target.color);
+
+		console.log('asked:', askedColors);
 
 		// taula de colors a la posició correcta
 		const positionOk = solution.filter((color, index) => color === askedColors[index]);
@@ -87,7 +91,7 @@ function App() {
 
 	const showResult = () => {
 		setAttempt(0);
-		console.log('result');
+		setEndGame(true);
 	};
 
 	const changeAttempt = () => {
@@ -112,11 +116,13 @@ function App() {
 					onChangeAttempt: changeAttempt,
 				}}
 			>
-				<ColorContext.Provider value={{ colors: colors }}>
-					<Header />
-					<Board />
-					<Footer />
-				</ColorContext.Provider>
+				<SolutionContext.Provider value={{ solution: solution, showSolution: endGame }}>
+					<ColorContext.Provider value={{ colors: colors }}>
+						<Header />
+						<Board />
+						<Footer />
+					</ColorContext.Provider>
+				</SolutionContext.Provider>
 			</AttemptContext.Provider>
 		</PinContext.Provider>
 	);
