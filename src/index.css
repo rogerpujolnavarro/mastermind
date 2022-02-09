@@ -34,6 +34,12 @@ body {
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  #root {
+    width: 100vw;
+  }
+}
+
 .disabled {
   pointer-events: none;
 }
@@ -78,7 +84,6 @@ button.disabled {
 /* Header */
 header {
   width: 100%;
-  background-color: rgba(var(--primary), 0.75);
 }
 
 header nav {
