@@ -14,10 +14,8 @@ const Header = () => {
 		<header>
 			<nav>
 				<FiHelpCircle onClick={showHelp} />
-				<div>
-					<FiAward onClick={showStats} />
-					<FiSliders onClick={showSetup} />
-				</div>
+				<FiAward onClick={showStats} />
+				<FiSliders onClick={showSetup} />
 			</nav>
 		</header>
 	);
