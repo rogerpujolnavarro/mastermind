@@ -60,7 +60,7 @@ function App() {
 		const lastIndex = firstIndex + totalColumns - 1;
 
 		// taula dels colors preguntats acotada segons els indexs, oredenada
-		const askedColors = targetHoles
+		let askedColors = targetHoles
 			.filter(({ position }) => position >= firstIndex && position <= lastIndex)
 			.sort((target1, target2) => target1.position - target2.position)
 			.map((target) => target.color);
@@ -69,9 +69,14 @@ function App() {
 
 		// taula de colors a la posició correcta
 		const positionOk = solution.filter((color, index) => color === askedColors[index]);
+		askedColors = askedColors.filter((color) => !positionOk.includes(color));
 		console.log('ok:', positionOk);
+		console.log('new asked:', askedColors);
 
-		const colorOk = solution.filter((color) => askedColors.includes(color));
+		// taula de colors encertats sense la posició
+		const positionNoOk = solution.filter((color, index) => color !== askedColors[index]);
+		console.log('no ok:', positionNoOk);
+		const colorOk = askedColors.filter((color) => positionNoOk.includes(color));
 		console.log('color:', colorOk);
 		console.log('---');
 
@@ -79,7 +84,7 @@ function App() {
 		for (let index = 0; index < positionOk.length; index++) {
 			tableAnswers = [...tableAnswers, 'positionOk'];
 		}
-		for (let index = 0; index < colorOk.length - positionOk.length; index++) {
+		for (let index = 0; index < colorOk.length; index++) {
 			tableAnswers = [...tableAnswers, 'colorOk'];
 		}
 
