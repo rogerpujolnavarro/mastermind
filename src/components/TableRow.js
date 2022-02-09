@@ -38,8 +38,9 @@ const TableRow = ({ indexRow, row }) => {
 				))}
 				<button
 					key={`button-${indexRow}`}
-					className={`${totalAttempts - attempt === indexRow ? '' : 'invisible'}${
-						targetHoles.length === (totalAttempts - attempt + 1) * totalColumns
+					className={`${totalAttempts - attempt <= indexRow ? '' : 'invisible'}${
+						targetHoles.length === (totalAttempts - attempt + 1) * totalColumns &&
+						totalAttempts - attempt <= indexRow
 							? ''
 							: ' disabled'
 					}`}

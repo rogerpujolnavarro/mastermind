@@ -30,19 +30,17 @@
   align-items: center;
 }
 
-.invisible {
-  opacity: 0;
-}
-
 .disabled {
   pointer-events: none;
+}
+
+.invisible {
+  opacity: 0 !important;
 }
 
 .d-none {
   display: none !important;
 }
-
-
 
 button {
   background-color: var(--primary);
