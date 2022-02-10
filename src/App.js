@@ -69,14 +69,19 @@ function App() {
 
 		// taula de colors a la posició correcta
 		const positionOk = solution.filter((color, index) => color === askedColors[index]);
-		askedColors = askedColors.filter((color) => !positionOk.includes(color));
-		console.log('ok:', positionOk);
-		console.log('new asked:', askedColors);
+
+		// elimina de la taula de solució els que tenen posició correcta
+		const newSolution = solution.filter((color, index) => color !== askedColors[index]);
+
+		// elimina de la taula de preguntats els que ja tenen posició correcta
+		askedColors = askedColors.filter((color, index) => color !== solution[index]);
 
 		// taula de colors encertats sense la posició
-		const positionNoOk = solution.filter((color, index) => color !== askedColors[index]);
-		console.log('no ok:', positionNoOk);
-		const colorOk = askedColors.filter((color) => positionNoOk.includes(color));
+		const colorOk = newSolution.filter((color) => askedColors.includes(color));
+
+		console.log('ok:', positionOk);
+		console.log('new solution:', newSolution);
+		console.log('new asked:', askedColors);
 		console.log('color:', colorOk);
 		console.log('---');
 
