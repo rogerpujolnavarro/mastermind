@@ -92,7 +92,6 @@ function App() {
 	};
 
 	const showResult = () => {
-		// setAttempt(0);
 		setEndGame(true);
 	};
 

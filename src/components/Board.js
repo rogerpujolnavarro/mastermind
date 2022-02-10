@@ -43,18 +43,22 @@ const Board = () => {
 				<TableRow key={`table-${index}`} row={row} indexRow={index} />
 			))}
 			<div className="pin-board">
-				<Pins />
-				<button
-					className={`${
-						targetHoles.length === (totalAttempts - attempt + 1) * totalColumns &&
-						!endGame
-							? ''
-							: 'disabled'
-					}`}
-					onClick={onChangeAttempt}
-				>
-					<FiCornerDownLeft />
-				</button>
+				{!endGame && (
+					<>
+						<Pins />
+						<button
+							className={`${
+								targetHoles.length ===
+									(totalAttempts - attempt + 1) * totalColumns && !endGame
+									? ''
+									: 'disabled'
+							}`}
+							onClick={onChangeAttempt}
+						>
+							<FiCornerDownLeft />
+						</button>
+					</>
+				)}
 			</div>
 		</main>
 	);
