@@ -1,21 +1,18 @@
+// react
+import { useContext } from 'react';
 import { FiAward, FiHelpCircle, FiSliders } from 'react-icons/fi';
+// contexts
+import SettingsContext from '../contexts/SettingsContext';
 
 const Header = () => {
-	const showHelp = () => {
-		console.log('help');
-	};
-	const showStats = () => {
-		console.log('stats');
-	};
-	const showSetup = () => {
-		console.log('setup');
-	};
+	const { showHelp, showOptions, showStats } = useContext(SettingsContext);
+
 	return (
 		<header>
 			<nav>
-				<FiHelpCircle onClick={showHelp} />
-				<FiAward onClick={showStats} />
-				<FiSliders onClick={showSetup} />
+				<FiHelpCircle onClick={() => showHelp(true)} />
+				<FiAward onClick={() => showStats(true)} />
+				<FiSliders onClick={() => showOptions(true)} />
 			</nav>
 		</header>
 	);

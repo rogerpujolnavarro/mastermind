@@ -4,10 +4,14 @@ import { useEffect, useState } from 'react';
 import Board from './components/Board';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Help from './components/Help';
+import Options from './components/Options';
+import Stats from './components/Stats';
 // contexts
 import AttemptContext from './contexts/AttemptContext';
 import ColorContext from './contexts/ColorsContext';
 import PinContext from './contexts/PinContext';
+import SettingsContext from './contexts/SettingsContext';
 import SolutionContext from './contexts/SolutionContext';
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
 	};
 	const [solution, setSolution] = useState(createCombination);
 	const [endGame, setEndGame] = useState(false);
+
+	const [statusHelp, setStatusHelp] = useState(false);
+	const [statusOptions, setStatusOptions] = useState(false);
+	const [statusStats, setStatusStats] = useState(false);
 
 	useEffect(() => {
 		console.log(solution);
@@ -108,35 +116,56 @@ function App() {
 		setSolution(createCombination);
 	};
 
+	const showHelp = (show) => {
+		setStatusHelp(show);
+	};
+	const showOptions = (show) => {
+		setStatusOptions(show);
+	};
+	const showStats = (show) => {
+		setStatusStats(show);
+	};
+
 	return (
-		<PinContext.Provider
+		<AttemptContext.Provider
 			value={{
-				activePin: activePin,
-				answerHoles: answerHoles,
-				targetHoles: targetHoles,
-				onChangePin: changePin,
+				attempt: attempt,
+				colors: colors,
+				totalAttempts: totalAttempts,
+				totalColumns: totalColumns,
+				onChangeAttempt: changeAttempt,
 			}}
 		>
-			<AttemptContext.Provider
-				value={{
-					attempt: attempt,
-					colors: colors,
-					totalAttempts: totalAttempts,
-					totalColumns: totalColumns,
-					onChangeAttempt: changeAttempt,
-				}}
-			>
-				<SolutionContext.Provider
-					value={{ solution: solution, endGame: endGame, onNewGame: newGame }}
+			<ColorContext.Provider value={{ colors: colors }}>
+				<PinContext.Provider
+					value={{
+						activePin: activePin,
+						answerHoles: answerHoles,
+						targetHoles: targetHoles,
+						onChangePin: changePin,
+					}}
 				>
-					<ColorContext.Provider value={{ colors: colors }}>
-						<Header />
-						<Board />
-						<Footer />
-					</ColorContext.Provider>
-				</SolutionContext.Provider>
-			</AttemptContext.Provider>
-		</PinContext.Provider>
+					<SettingsContext.Provider
+						value={{
+							showHelp: showHelp,
+							showOptions: showOptions,
+							showStats: showStats,
+						}}
+					>
+						<SolutionContext.Provider
+							value={{ solution: solution, endGame: endGame, onNewGame: newGame }}
+						>
+							<Header />
+							{statusHelp && <Help />}
+							{statusOptions && <Options />}
+							{statusStats && <Stats />}
+							<Board />
+							<Footer />
+						</SolutionContext.Provider>
+					</SettingsContext.Provider>
+				</PinContext.Provider>
+			</ColorContext.Provider>
+		</AttemptContext.Provider>
 	);
 }
 
