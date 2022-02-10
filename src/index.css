@@ -119,6 +119,21 @@ main button svg {
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  animation: new-row 500ms forwards ease-in-out 100ms;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+@keyframes new-row {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .pin-board {
@@ -175,6 +190,40 @@ main button svg {
   border: 2px dashed #000;
   border-radius: 0.25rem;
 }
+
+.solution-hole.show {
+  opacity: 0;
+  animation: show-solution 1s ease-in-out forwards;
+}
+
+.solution-hole.show:nth-child(2) {
+  animation: show-solution 1s ease-in-out forwards 0.3s;
+}
+
+.solution-hole.show:nth-child(3) {
+  animation: show-solution 1s ease-in-out forwards 0.6s;
+}
+
+.solution-hole.show:nth-child(4) {
+  animation: show-solution 1s ease-in-out forwards 0.9s;
+}
+
+.solution-hole.show:nth-child(5) {
+  animation: show-solution 1s ease-in-out forwards 1.2s;
+}
+
+@keyframes show-solution {
+  from {
+    transform: rotate3d(1, 0, 0, 360deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotate3d(1, 0, 0, 0deg);
+    opacity: 1;
+  }
+}
+
 
 .solution-hole {
   cursor: auto;

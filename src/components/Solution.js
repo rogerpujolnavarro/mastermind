@@ -10,7 +10,7 @@ const Solution = ({ id }) => {
 	const { solution, endGame } = useContext(SolutionContext);
 	return (
 		<li
-			className="solution-hole"
+			className={`solution-hole${endGame ? ' show' : ''}`}
 			style={{
 				backgroundImage: endGame ? createGradient(solution[id]) : 'none',
 			}}
