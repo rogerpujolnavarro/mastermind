@@ -30,10 +30,6 @@ function App() {
 	const [solution, setSolution] = useState(createCombination);
 	const [endGame, setEndGame] = useState(false);
 
-	// useEffect(() => {
-	// 	console.log(answerHoles);
-	// }, [answerHoles]);
-
 	useEffect(() => {
 		console.log(solution);
 	}, [solution]);
@@ -65,8 +61,6 @@ function App() {
 			.sort((target1, target2) => target1.position - target2.position)
 			.map((target) => target.color);
 
-		console.log('asked:', askedColors);
-
 		// taula de colors a la posició correcta
 		const positionOk = solution.filter((color, index) => color === askedColors[index]);
 
@@ -78,12 +72,6 @@ function App() {
 
 		// taula de colors encertats sense la posició
 		const colorOk = newSolution.filter((color) => askedColors.includes(color));
-
-		console.log('ok:', positionOk);
-		console.log('new solution:', newSolution);
-		console.log('new asked:', askedColors);
-		console.log('color:', colorOk);
-		console.log('---');
 
 		let tableAnswers = [];
 		for (let index = 0; index < positionOk.length; index++) {
@@ -104,7 +92,7 @@ function App() {
 	};
 
 	const showResult = () => {
-		setAttempt(0);
+		// setAttempt(0);
 		setEndGame(true);
 	};
 
@@ -140,7 +128,7 @@ function App() {
 				}}
 			>
 				<SolutionContext.Provider
-					value={{ solution: solution, showSolution: endGame, onNewGame: newGame }}
+					value={{ solution: solution, endGame: endGame, onNewGame: newGame }}
 				>
 					<ColorContext.Provider value={{ colors: colors }}>
 						<Header />

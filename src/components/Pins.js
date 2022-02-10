@@ -11,7 +11,7 @@ const Pins = () => {
 	const { onChangePin } = useContext(PinContext);
 
 	return (
-		<>
+		<ul>
 			{colors.map((color) => (
 				<li
 					key={color}
@@ -22,7 +22,7 @@ const Pins = () => {
 					onClick={() => onChangePin(color, false)}
 				></li>
 			))}
-		</>
+		</ul>
 	);
 };
 

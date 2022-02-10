@@ -7,15 +7,15 @@ import SolutionContext from '../contexts/SolutionContext';
 import { createGradient } from '../defaults/functions';
 
 const Solution = ({ id }) => {
-	const { solution, showSolution } = useContext(SolutionContext);
+	const { solution, endGame } = useContext(SolutionContext);
 	return (
 		<li
 			className="solution-hole"
 			style={{
-				backgroundImage: showSolution ? createGradient(solution[id]) : 'none',
+				backgroundImage: endGame ? createGradient(solution[id]) : 'none',
 			}}
 		>
-			{!showSolution && <FiHelpCircle />}
+			{!endGame && <FiHelpCircle />}
 		</li>
 	);
 };
