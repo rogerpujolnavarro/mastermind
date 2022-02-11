@@ -1,5 +1,6 @@
 // react
 import { useEffect, useState } from 'react';
+import { FiX } from 'react-icons/fi';
 // components
 import Board from './components/Board';
 import Footer from './components/Footer';
@@ -13,16 +14,17 @@ import ColorContext from './contexts/ColorsContext';
 import PinContext from './contexts/PinContext';
 import SettingsContext from './contexts/SettingsContext';
 import SolutionContext from './contexts/SolutionContext';
+// defaults
+import { colors, totalAttempts, totalColumns } from './defaults/parameters';
 
 function App() {
-	const totalAttempts = 12;
-	const totalColumns = 5;
-	const colors = ['black', 'blue', 'green', 'red', 'yellow', 'ivory', 'gray', 'orange'];
-
+	// estats
 	const [activePin, setActivePin] = useState(false);
 	const [targetHoles, setTargetHoles] = useState([]);
 	const [answerHoles, setAnswerHoles] = useState([]);
 	const [attempt, setAttempt] = useState(totalAttempts);
+	const [endGame, setEndGame] = useState(false);
+	const [activeWindow, setActiveWindow] = useState(false);
 
 	const createCombination = () => {
 		const newCombination = [];
@@ -32,11 +34,6 @@ function App() {
 		return newCombination;
 	};
 	const [solution, setSolution] = useState(createCombination);
-	const [endGame, setEndGame] = useState(false);
-
-	const [statusHelp, setStatusHelp] = useState(false);
-	const [statusOptions, setStatusOptions] = useState(false);
-	const [statusStats, setStatusStats] = useState(false);
 
 	useEffect(() => {
 		console.log(solution);
@@ -116,14 +113,8 @@ function App() {
 		setSolution(createCombination);
 	};
 
-	const showHelp = (show) => {
-		setStatusHelp(show);
-	};
-	const showOptions = (show) => {
-		setStatusOptions(show);
-	};
-	const showStats = (show) => {
-		setStatusStats(show);
+	const showWindow = (window) => {
+		setActiveWindow(window);
 	};
 
 	return (
@@ -147,19 +138,27 @@ function App() {
 				>
 					<SettingsContext.Provider
 						value={{
-							showHelp: showHelp,
-							showOptions: showOptions,
-							showStats: showStats,
+							showWindow: showWindow,
 						}}
 					>
 						<SolutionContext.Provider
 							value={{ solution: solution, endGame: endGame, onNewGame: newGame }}
 						>
 							<Header />
-							{statusHelp && <Help />}
-							{statusOptions && <Options />}
-							{statusStats && <Stats />}
-							<Board />
+							{activeWindow && (
+								<div className="window">
+									<header>
+										<h3>{activeWindow}</h3>
+										<button onClick={() => showWindow(false)}>
+											<FiX />
+										</button>
+									</header>
+									{activeWindow === 'help' && <Help />}
+									{activeWindow === 'options' && <Options />}
+									{activeWindow === 'stats' && <Stats />}
+								</div>
+							)}
+							{!activeWindow && <Board />}
 							<Footer />
 						</SolutionContext.Provider>
 					</SettingsContext.Provider>

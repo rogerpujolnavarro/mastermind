@@ -42,10 +42,6 @@ a {
   text-decoration: none;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
 button {
   cursor: pointer;
   background-color: var(--primary);
@@ -70,6 +66,10 @@ button.disabled {
   opacity: 0.6;
 }
 
+button svg {
+  font-size: 1.5rem;
+}
+
 svg {
   color: var(--light);
 }
@@ -79,7 +79,7 @@ header nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 header nav svg {
@@ -87,10 +87,12 @@ header nav svg {
   font-size: 1.5rem;
 }
 
-/* Board */
-main {
+/* window */
+.window {
+  width: 392px;
   flex: 1;
   display: flex;
+  flex-direction: column;
   margin: 1rem 0;
   padding: 1rem;
   background-color: var(--main-color);
@@ -98,20 +100,29 @@ main {
   border-radius: 0.25rem;
 }
 
+.window header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Board */
 main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--main-color);
+  background-image: url("./background.png");
+  border-radius: 0.25rem;
 }
 
 main ul {
   display: flex;
   margin: 0.5rem 0;
   gap: 0.5rem;
-}
-
-main button svg {
-  font-size: 1.5rem;
 }
 
 .row-board {
@@ -122,6 +133,11 @@ main button svg {
   animation: new-row 500ms forwards ease-in-out 100ms;
   transform: translateY(-100%);
   opacity: 0;
+  margin-top: 0.5rem;
+}
+
+.row-board ul:first-child {
+  flex-wrap: wrap;
 }
 
 @keyframes new-row {
@@ -180,13 +196,21 @@ main button svg {
 
 .solution div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
 }
 
 .solution ul {
   padding: 0.75rem;
+  border: 2px dashed #000;
+  border-radius: 0.25rem;
+}
+
+h3 {
+  width: 70%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   border: 2px dashed #000;
   border-radius: 0.25rem;
 }
@@ -248,9 +272,15 @@ footer {
   font-size: 90%;
 }
 
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Responsive */
 @media only screen and (max-width: 600px) {
-  main {
+
+  main,
+  .window {
     width: 100vw;
   }
 }
