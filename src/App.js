@@ -15,15 +15,20 @@ import PinContext from './contexts/PinContext';
 import SettingsContext from './contexts/SettingsContext';
 import SolutionContext from './contexts/SolutionContext';
 // defaults
+import { getLocal, saveLocal } from './defaults/functions';
 import { colors, totalAttempts, totalColumns } from './defaults/parameters';
 
 function App() {
 	// estats
 	const [activePin, setActivePin] = useState(false);
-	const [targetHoles, setTargetHoles] = useState([]);
+	const [targetHoles, setTargetHoles] = useState(
+		getLocal('targetHoles') ? getLocal('targetHoles') : []
+	);
 	const [answerHoles, setAnswerHoles] = useState([]);
-	const [attempt, setAttempt] = useState(totalAttempts);
-	const [endGame, setEndGame] = useState(false);
+	const [attempt, setAttempt] = useState(
+		getLocal('attempt') ? getLocal('attempt') : totalAttempts
+	);
+	const [endGame, setEndGame] = useState(getLocal('endGame'));
 	const [activeWindow, setActiveWindow] = useState(false);
 
 	const createCombination = () => {
@@ -33,15 +38,27 @@ function App() {
 		}
 		return newCombination;
 	};
-	const [solution, setSolution] = useState(createCombination);
+	const [solution, setSolution] = useState(
+		getLocal('solution') ? getLocal('solution') : createCombination
+	);
 
 	useEffect(() => {
 		console.log(solution);
+		saveLocal('solution', solution);
 	}, [solution]);
 
 	useEffect(() => {
 		attempt === 0 && showResult();
+		saveLocal('attempt', attempt);
 	}, [attempt]);
+
+	useEffect(() => {
+		saveLocal('endGame', endGame);
+	}, [endGame]);
+
+	useEffect(() => {
+		saveLocal('targetHoles', targetHoles);
+	}, [targetHoles]);
 
 	const changePin = (color, position) => {
 		position &&
