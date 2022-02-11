@@ -5,14 +5,14 @@ import { FiAward, FiHelpCircle, FiSliders } from 'react-icons/fi';
 import SettingsContext from '../contexts/SettingsContext';
 
 const Header = () => {
-	const { showWindow } = useContext(SettingsContext);
+	const { onShowWindow } = useContext(SettingsContext);
 
 	return (
 		<header>
 			<nav>
-				<FiHelpCircle onClick={() => showWindow('help')} />
-				<FiAward onClick={() => showWindow('stats')} />
-				<FiSliders onClick={() => showWindow('options')} />
+				<FiHelpCircle onClick={() => onShowWindow('help')} />
+				<FiAward onClick={() => onShowWindow('stats')} />
+				<FiSliders onClick={() => onShowWindow('options')} />
 			</nav>
 		</header>
 	);

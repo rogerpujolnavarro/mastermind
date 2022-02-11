@@ -45,6 +45,9 @@ const Board = () => {
 			<div className="pin-board">
 				{!endGame && (
 					<>
+						<span className="attempts">
+							{totalAttempts - attempt + 1 + '⌁' + totalAttempts}
+						</span>
 						<Pins />
 						<button
 							className={`${

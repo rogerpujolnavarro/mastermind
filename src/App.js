@@ -17,6 +17,7 @@ import SolutionContext from './contexts/SolutionContext';
 // defaults
 import { getLocal, saveLocal } from './defaults/functions';
 import { colors, totalAttempts, totalColumns } from './defaults/parameters';
+import { titles } from './defaults/titles';
 
 function App() {
 	// estats
@@ -24,7 +25,9 @@ function App() {
 	const [targetHoles, setTargetHoles] = useState(
 		getLocal('targetHoles') ? getLocal('targetHoles') : []
 	);
-	const [answerHoles, setAnswerHoles] = useState([]);
+	const [answerHoles, setAnswerHoles] = useState(
+		getLocal('answerHoles') ? getLocal('answerHoles') : []
+	);
 	const [attempt, setAttempt] = useState(
 		getLocal('attempt') ? getLocal('attempt') : totalAttempts
 	);
@@ -42,6 +45,18 @@ function App() {
 		getLocal('solution') ? getLocal('solution') : createCombination
 	);
 
+	const [language, setLanguage] = useState(getLocal('language') ? getLocal('language') : 'ca');
+	const [mode, setMode] = useState(
+		getLocal('mode') ? getLocal('mode') : { dark: true, appearance: 'vintage' }
+	);
+
+	const changeLanguage = (newLanguage) => {
+		setLanguage(newLanguage);
+	};
+	const changeMode = (newMode) => {
+		setMode(newMode);
+	};
+
 	useEffect(() => {
 		console.log(solution);
 		saveLocal('solution', solution);
@@ -57,8 +72,32 @@ function App() {
 	}, [endGame]);
 
 	useEffect(() => {
+		saveLocal('answerHoles', answerHoles);
+	}, [answerHoles]);
+
+	useEffect(() => {
 		saveLocal('targetHoles', targetHoles);
 	}, [targetHoles]);
+
+	useEffect(() => {
+		saveLocal('language', language);
+	}, [language]);
+
+	useEffect(() => {
+		saveLocal('mode', mode);
+		console.log(getLocal('mode'));
+	}, [mode]);
+
+	const saveStats = () => {
+		const games = getLocal('games') ? getLocal('games') : [];
+		saveLocal('games', [
+			...games,
+			{
+				attempts: attempt ? totalAttempts - attempt + 1 : totalAttempts,
+				solved: attempt ? true : false,
+			},
+		]);
+	};
 
 	const changePin = (color, position) => {
 		position &&
@@ -115,6 +154,7 @@ function App() {
 
 	const showResult = () => {
 		setEndGame(true);
+		saveStats();
 	};
 
 	const changeAttempt = () => {
@@ -155,7 +195,11 @@ function App() {
 				>
 					<SettingsContext.Provider
 						value={{
-							showWindow: showWindow,
+							language: language,
+							mode: mode,
+							onChangeLanguage: changeLanguage,
+							onChangeMode: changeMode,
+							onShowWindow: showWindow,
 						}}
 					>
 						<SolutionContext.Provider
@@ -165,7 +209,7 @@ function App() {
 							{activeWindow && (
 								<div className="window">
 									<header>
-										<h3>{activeWindow}</h3>
+										<h3>{titles[language][activeWindow]}</h3>
 										<button onClick={() => showWindow(false)}>
 											<FiX />
 										</button>
