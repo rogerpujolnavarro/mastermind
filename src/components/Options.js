@@ -6,8 +6,8 @@ import SettingsContext from '../contexts/SettingsContext';
 const Options = () => {
 	const { language, mode, onChangeLanguage, onChangeMode } = useContext(SettingsContext);
 	return (
-		<div className="settings">
-			<ul className="languages">
+		<div>
+			<ul>
 				<li
 					className={language === 'ca' ? 'active' : ''}
 					onClick={() => onChangeLanguage('ca')}
@@ -27,7 +27,7 @@ const Options = () => {
 					en
 				</li>
 			</ul>
-			<ul className="mode">
+			<ul>
 				<li
 					className={mode.dark ? 'active' : ''}
 					onClick={() => onChangeMode({ dark: true, appearance: mode.appearance })}
@@ -41,7 +41,7 @@ const Options = () => {
 					light
 				</li>
 			</ul>
-			<ul className="mode">
+			<ul>
 				<li
 					className={mode.appearance === 'vintage' ? 'active' : ''}
 					onClick={() => onChangeMode({ dark: mode.dark, appearance: 'vintage' })}

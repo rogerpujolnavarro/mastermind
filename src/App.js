@@ -65,6 +65,7 @@ function App() {
 	useEffect(() => {
 		attempt === 0 && showResult();
 		saveLocal('attempt', attempt);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [attempt]);
 
 	useEffect(() => {
