@@ -219,14 +219,19 @@ main ul {
 
 .pins {
   cursor: pointer;
+  display: block;
   border: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 /* game board */
 .hole,
-.solution-hole,
-.pins {
+.solution-hole {
   cursor: pointer;
   display: block;
   border: 2px solid var(--dark);
