@@ -1,6 +1,5 @@
 // defaults
 import { getLocal } from '../defaults/functions';
-import { colors } from '../defaults/parameters';
 
 const Stats = () => {
 	const data = getLocal('games') ? getLocal('games') : [];
