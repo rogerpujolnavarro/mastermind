@@ -35,10 +35,10 @@ function App() {
 	const [activeWindow, setActiveWindow] = useState(false);
 
 	const createCombination = () => {
-		const newCombination = [];
-		for (let i = 0; i < totalColumns; i++) {
-			newCombination[i] = colors[Math.floor(Math.random() * colors.length)];
-		}
+		const newCombination = ['black', 'black', 'orange', 'black', 'red'];
+		// for (let i = 0; i < totalColumns; i++) {
+		// 	newCombination[i] = colors[Math.floor(Math.random() * colors.length)];
+		// }
 		return newCombination;
 	};
 	const [solution, setSolution] = useState(
@@ -125,14 +125,17 @@ function App() {
 		// taula de colors a la posició correcta
 		const positionOk = solution.filter((color, index) => color === askedColors[index]);
 
-		// elimina de la taula de solució els que tenen posició correcta
-		const newSolution = solution.filter((color, index) => color !== askedColors[index]);
-
 		// elimina de la taula de preguntats els que ja tenen posició correcta
 		askedColors = askedColors.filter((color, index) => color !== solution[index]);
 
 		// taula de colors encertats sense la posició
-		const colorOk = newSolution.filter((color) => askedColors.includes(color));
+		let colorOk = [];
+		for (const color of solution.filter((color, index) => color !== askedColors[index])) {
+			if (askedColors.includes(color)) {
+				colorOk = [...colorOk, color];
+				askedColors[askedColors.findIndex((askedColor) => color === askedColor)] = '';
+			}
+		}
 
 		let tableAnswers = [];
 		for (let index = 0; index < positionOk.length; index++) {
