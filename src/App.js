@@ -35,10 +35,10 @@ function App() {
 	const [activeWindow, setActiveWindow] = useState(false);
 
 	const createCombination = () => {
-		const newCombination = ['black', 'black', 'orange', 'black', 'red'];
-		// for (let i = 0; i < totalColumns; i++) {
-		// 	newCombination[i] = colors[Math.floor(Math.random() * colors.length)];
-		// }
+		const newCombination = [];
+		for (let i = 0; i < totalColumns; i++) {
+			newCombination[i] = colors[Math.floor(Math.random() * colors.length)];
+		}
 		return newCombination;
 	};
 	const [solution, setSolution] = useState(
@@ -63,13 +63,24 @@ function App() {
 	}, [solution]);
 
 	useEffect(() => {
-		attempt === 0 && showResult();
+		attempt === 0 && setEndGame(true);
 		saveLocal('attempt', attempt);
 	}, [attempt]);
 
 	useEffect(() => {
+		const saveStats = () => {
+			const games = getLocal('games') ? getLocal('games') : [];
+			saveLocal('games', [
+				...games,
+				{
+					attempts: attempt ? totalAttempts - attempt + 1 : totalAttempts,
+					solved: attempt ? true : false,
+				},
+			]);
+		};
 		saveLocal('endGame', endGame);
-	}, [endGame]);
+		endGame && saveStats();
+	}, [attempt, endGame]);
 
 	useEffect(() => {
 		saveLocal('answerHoles', answerHoles);
@@ -87,17 +98,6 @@ function App() {
 		saveLocal('mode', mode);
 		console.log(getLocal('mode'));
 	}, [mode]);
-
-	const saveStats = () => {
-		const games = getLocal('games') ? getLocal('games') : [];
-		saveLocal('games', [
-			...games,
-			{
-				attempts: attempt ? totalAttempts - attempt + 1 : totalAttempts,
-				solved: attempt ? true : false,
-			},
-		]);
-	};
 
 	const changePin = (color, position) => {
 		position &&
@@ -155,13 +155,8 @@ function App() {
 		return tableAnswers.filter((answer) => answer === 'positionOk').length === totalColumns;
 	};
 
-	const showResult = () => {
-		setEndGame(true);
-		saveStats();
-	};
-
 	const changeAttempt = () => {
-		checkAttempt(attempt) ? showResult() : setAttempt(attempt - 1);
+		checkAttempt(attempt) ? setEndGame(true) : setAttempt(attempt - 1);
 	};
 
 	const newGame = () => {
