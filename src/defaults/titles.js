@@ -30,12 +30,12 @@ const helpTexts = {
 		`El ordren de la solución no corresponde a la de cada intento`,
 	],
 	en: [
-		`Troba la combinació de ${totalColumns} colors en ${totalAttempts} intents`,
-		`Introdueix una combinació de colors i clica a OK`,
-		`Després de cada intent, a l'esquerra es mostren els encerts`,
-		`En negre es mostren els colors en la posició correcte`,
-		`En blanc els colors que hi són, però en una altra posició`,
-		`L'ordre de la com es mostra la solució no correspon a la de cada intent`,
+		`Find the combination of ${totalColumns} colors in ${totalAttempts} attempts`,
+		`Enter a color scheme and click ↲`,
+		`After each attempt, the hits are shown`,
+		`In black, colors in the correct position`,
+		`In white, colors that are there, but in a different position`,
+		`The order of the solution doesn't match with each attempt`,
 	],
 };
 export { helpTexts, titles, statsText };
