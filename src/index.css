@@ -145,19 +145,20 @@ header nav svg {
     line-height: var(--size-pin);
     border: 2px dashed #000;
     border-radius: 0.25rem;
+    color: var(--light);
 }
 
 .window div {
     align-self: center;
 }
 
-.window ul {
+.options ul {
     margin: 2rem;
     display: flex;
     gap: 0.5rem;
 }
 
-.window li {
+.options li {
     cursor: pointer;
     list-style-type: none;
     width: 5rem;
@@ -170,9 +171,21 @@ header nav svg {
     font-size: 1.2rem;
 }
 
-.window li.active {
-    color: var(--dark);
-    background-color: rgb(175, 224, 127);
+.options li.active {
+    background-color: var(--primary);
+}
+
+ul.help {
+    padding: 1rem;
+    margin: 1rem;
+    color: var(--light);
+    font-size: 1.2rem;
+}
+
+.help li {
+    list-style-type: none;
+    margin-top: 1rem;
+    text-align: center;
 }
 
 

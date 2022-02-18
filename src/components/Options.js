@@ -6,7 +6,7 @@ import SettingsContext from '../contexts/SettingsContext';
 const Options = () => {
 	const { language, mode, onChangeLanguage, onChangeMode } = useContext(SettingsContext);
 	return (
-		<div>
+		<div className="options">
 			<ul>
 				<li
 					className={language === 'ca' ? 'active' : ''}

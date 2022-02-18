@@ -1,7 +1,14 @@
+// react
+import { useContext } from 'react';
+// contexts
+import SettingsContext from '../contexts/SettingsContext';
 // defaults
 import { getLocal } from '../defaults/functions';
+import { statsText } from '../defaults/titles';
 
 const Stats = () => {
+	const { language } = useContext(SettingsContext);
+
 	const data = getLocal('games') ? getLocal('games') : [];
 	const solved = data.filter((game) => game.solved).length;
 	const unsolved = data.filter((game) => !game.solved).length;
@@ -27,15 +34,18 @@ const Stats = () => {
 			<ul>
 				<li>
 					<span>{totalGames}</span>
-					<span>Games</span>
+					{` `}
+					<span>{statsText[language].games}</span>
 				</li>
 				<li>
 					<span>{solved}</span>
-					<span>Solved</span>
+					{` `}
+					<span>{statsText[language].solved}</span>
 				</li>
 				<li>
 					<span>{unsolved}</span>
-					<span>Unsolved</span>
+					{` `}
+					<span>{statsText[language].unsolved}</span>
 				</li>
 			</ul>
 			{stats
