@@ -10,7 +10,7 @@ const Help = () => {
 	return (
 		<ul className="help">
 			{helpTexts[language].map((text, index) => (
-				<li key={index}>{text}</li>
+				<li key={index}>⌁ {text}</li>
 			))}
 		</ul>
 	);

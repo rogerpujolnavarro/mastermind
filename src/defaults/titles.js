@@ -8,8 +8,8 @@ const titles = {
 };
 
 const statsText = {
-	ca: { games: 'Partides', solved: 'Resolts', unsolved: 'No resolts' },
-	es: { games: 'Partidas', solved: 'Resueltos', unsolved: 'No resueltos' },
+	ca: { games: 'Partides', solved: 'Resolts', unsolved: 'Fallats' },
+	es: { games: 'Partidas', solved: 'Resueltos', unsolved: 'Fallados' },
 	en: { games: 'Games', solved: 'Solved', unsolved: 'Unsolved' },
 };
 const helpTexts = {

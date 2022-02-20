@@ -1,5 +1,7 @@
 // react
 import { useContext } from 'react';
+// components
+// import Graphic from './Graphic';
 // contexts
 import SettingsContext from '../contexts/SettingsContext';
 // defaults
@@ -29,9 +31,10 @@ const Stats = () => {
 	// stats = [...stats, { attempt: '0', percent: (unsolved * 100) / totalGames }];
 
 	console.log(stats);
+
 	return (
 		<div>
-			<ul>
+			<ul className="stats">
 				<li>
 					<span>{totalGames}</span>
 					{` `}
@@ -48,7 +51,8 @@ const Stats = () => {
 					<span>{statsText[language].unsolved}</span>
 				</li>
 			</ul>
-			{stats
+			{/* <Graphic /> */}
+			{/* {stats
 				.sort((attempt1, attempt2) => attempt1.attempt - attempt2.attempt)
 				.map(({ attempt, percent }) => (
 					<div key={`div-${attempt}`}>
@@ -66,7 +70,7 @@ const Stats = () => {
 							{percent.toFixed(2)}%
 						</progress>
 					</div>
-				))}
+				))} */}
 		</div>
 	);
 };
