@@ -1,7 +1,7 @@
 // react
 import { useContext } from 'react';
 // components
-// import Graphic from './Graphic';
+import Graphic from './Graphic';
 // contexts
 import SettingsContext from '../contexts/SettingsContext';
 // defaults
@@ -25,15 +25,25 @@ const Stats = () => {
 	for (const attempt in counts) {
 		stats = [
 			...stats,
-			{ attempt: parseInt(attempt), percent: (counts[attempt] * 100) / totalGames },
+			{
+				id: attempt,
+				label: `${statsText[language].attempt} ${attempt}⌁ ${counts[attempt]}`,
+				value: ((counts[attempt] * 100) / totalGames).toFixed(1),
+			},
 		];
 	}
-	// stats = [...stats, { attempt: '0', percent: (unsolved * 100) / totalGames }];
-
-	console.log(stats);
+	stats = [
+		...stats,
+		{
+			id: '0',
+			label: `${statsText[language].unsolved}⌁ ${unsolved}`,
+			value: ((unsolved * 100) / totalGames).toFixed(1),
+			color: 'red',
+		},
+	];
 
 	return (
-		<div>
+		<>
 			<ul className="stats">
 				<li>
 					<span>{totalGames}</span>
@@ -51,27 +61,10 @@ const Stats = () => {
 					<span>{statsText[language].unsolved}</span>
 				</li>
 			</ul>
-			{/* <Graphic /> */}
-			{/* {stats
-				.sort((attempt1, attempt2) => attempt1.attempt - attempt2.attempt)
-				.map(({ attempt, percent }) => (
-					<div key={`div-${attempt}`}>
-						<label key={`lab-${attempt}`} htmlFor={attempt}>
-							{attempt}
-						</label>
-						<progress
-							key={`progress-${attempt}`}
-							id={attempt}
-							name={attempt}
-							min="0"
-							max="100"
-							value={percent}
-						>
-							{percent.toFixed(2)}%
-						</progress>
-					</div>
-				))} */}
-		</div>
+			<div className="graphic">
+				<Graphic data={stats.sort((id1, id2) => id1.id - id2.id)} />
+			</div>
+		</>
 	);
 };
 

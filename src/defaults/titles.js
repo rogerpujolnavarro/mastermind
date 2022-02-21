@@ -8,9 +8,9 @@ const titles = {
 };
 
 const statsText = {
-	ca: { games: 'Partides', solved: 'Resolts', unsolved: 'Fallats' },
-	es: { games: 'Partidas', solved: 'Resueltos', unsolved: 'Fallados' },
-	en: { games: 'Games', solved: 'Solved', unsolved: 'Unsolved' },
+	ca: { games: 'Partides', solved: 'Resolts', unsolved: 'Fallats', attempt: 'Intent' },
+	es: { games: 'Partidas', solved: 'Resueltos', unsolved: 'Fallados', attempt: 'Intento' },
+	en: { games: 'Games', solved: 'Solved', unsolved: 'Unsolved', attempt: 'Attempt' },
 };
 const helpTexts = {
 	ca: [

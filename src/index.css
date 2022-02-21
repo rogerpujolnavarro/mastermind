@@ -163,6 +163,7 @@ ul.help {
 }
 
 ul.stats {
+    align-self: center;
     margin: 1rem;
     display: flex;
     gap: 0.75rem;
@@ -179,6 +180,20 @@ ul.stats {
     border-radius: 1rem;
     color: var(--light);
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.graphic {
+    height: 400px;
+    width: 100%;
+}
+
+.graphic svg * {
+    transition: none;
+}
+
+.graphic svg g text {
+    size: 1.2rem !important;
+    font-family: var(--typo);
 }
 
 .stats li span:first-of-type {
