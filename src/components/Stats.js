@@ -1,12 +1,10 @@
 // react
 import { useContext } from 'react';
-// components
-import Graphic from './Graphic';
 // contexts
 import SettingsContext from '../contexts/SettingsContext';
 // defaults
 import { getLocal } from '../defaults/functions';
-import { statsText } from '../defaults/titles';
+import { statsText } from '../defaults/texts';
 
 const Stats = () => {
 	const { language } = useContext(SettingsContext);
@@ -27,20 +25,12 @@ const Stats = () => {
 			...stats,
 			{
 				id: attempt,
-				label: `${statsText[language].attempt} ${attempt}⌁ ${counts[attempt]}`,
-				value: ((counts[attempt] * 100) / totalGames).toFixed(1),
+				label: `${attempt}`,
+				value: counts[attempt],
+				percent: ((counts[attempt] * 100) / totalGames).toFixed(1),
 			},
 		];
 	}
-	stats = [
-		...stats,
-		{
-			id: '0',
-			label: `${statsText[language].unsolved}⌁ ${unsolved}`,
-			value: ((unsolved * 100) / totalGames).toFixed(1),
-			color: 'red',
-		},
-	];
 
 	return (
 		<>
@@ -61,9 +51,26 @@ const Stats = () => {
 					<span>{statsText[language].unsolved}</span>
 				</li>
 			</ul>
-			<div className="graphic">
-				<Graphic data={stats.sort((id1, id2) => id1.id - id2.id)} />
-			</div>
+			{stats
+				.sort((id1, id2) => id1.id - id2.id)
+				.map((attempt) => (
+					<div key={`graphic-${attempt.id}`} className="graphic">
+						<span key={`label-${attempt.id}`} className="text-label">
+							{attempt.label}
+						</span>
+						<div key={`container-bar-${attempt.id}`} className="container-bar">
+							<div
+								key={`bar-${attempt.id}`}
+								className="bar"
+								style={{ width: `${attempt.percent}%` }}
+							>
+								<span key={`text-${attempt.id}`} className="text-stats">
+									{`${attempt.value} ⌁ ${attempt.percent}%`}
+								</span>
+							</div>
+						</div>
+					</div>
+				))}
 		</>
 	);
 };

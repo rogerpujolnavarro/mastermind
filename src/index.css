@@ -3,6 +3,7 @@
 :root {
     --main-color: rgba(137, 82, 61, 0.6);
     --primary: rgb(102, 52, 239);
+    --primary-60: rgb(102, 52, 239, 0.6);
     --dark: rgb(33, 33, 33);
     --light: rgb(238, 224, 224);
     --gray: rgb(100, 100, 100);
@@ -155,11 +156,13 @@ header nav svg {
 ul.help {
     padding: 1rem;
     color: var(--light);
+
 }
 
 .help li {
     list-style-type: none;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    line-height: 90%;
 }
 
 ul.stats {
@@ -183,17 +186,51 @@ ul.stats {
 }
 
 .graphic {
-    height: 400px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.text-label {
+    color: var(--light);
+    width: 50px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.container-bar {
+    height: 30px;
     width: 100%;
+    margin: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.graphic svg * {
-    transition: none;
+.container-bar .bar {
+    height: 30px;
+    line-height: 30px;
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    animation: load 2s ease-in-out forwards;
 }
 
-.graphic svg g text {
-    size: 1.2rem !important;
-    font-family: var(--typo);
+@keyframes load {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: none;
+    }
+}
+
+.text-stats {
+    color: var(--light);
+    padding: 0 1rem;
+    white-space: nowrap;
 }
 
 .stats li span:first-of-type {
