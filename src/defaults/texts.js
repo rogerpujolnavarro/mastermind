@@ -22,7 +22,7 @@ const optionTexts = {
 const helpTexts = {
 	ca: [
 		`Troba la combinació de ${totalColumns} colors en ${totalAttempts} intents`,
-		`Introdueix una combinació de colors i clica ↲`,
+		`Introdueix una combinació de colors i clica`,
 		`Després de cada intent, es mostren els encerts`,
 		`En negre, els colors en la posició correcte`,
 		`En blanc, els colors que hi són, però en una altra posició`,
@@ -31,7 +31,7 @@ const helpTexts = {
 	],
 	es: [
 		`Encuentra la combinación de ${totalColumns} colores en ${totalAttempts} intentos`,
-		`Introduce una combinación de colors y haz clic a ↲`,
+		`Introduce una combinación de colors y haz clic a`,
 		`Después de cada intento, se muestran los aciertos`,
 		`En negro, los colores en la posición correcta`,
 		`En blanco, los colores que hi estan, pero en otra posición`,
@@ -40,7 +40,7 @@ const helpTexts = {
 	],
 	en: [
 		`Find the combination of ${totalColumns} colors in ${totalAttempts} attempts`,
-		`Enter a color scheme and click ↲`,
+		`Enter a color scheme and click`,
 		`After each attempt, the hits are shown`,
 		`In black, colors in the correct position`,
 		`In white, colors that are there, but in a different position`,

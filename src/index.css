@@ -150,15 +150,23 @@ header nav svg {
 }
 
 ul.help {
-    padding: 1rem;
+    padding: 0 2rem;
     color: rgb(var(--light));
-
 }
 
-.help li {
+ul.help li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
     list-style-type: none;
     margin-top: 2rem;
     line-height: 90%;
+}
+
+ul.help div {
+    display: flex;
+    gap: 0.5rem;
 }
 
 ul.stats {
