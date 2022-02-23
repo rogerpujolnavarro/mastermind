@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
 
 :root {
-    --main-color: rgba(137, 82, 61, 0.6);
-    --primary: rgb(102, 52, 239);
-    --primary-60: rgb(102, 52, 239, 0.6);
-    --dark: rgb(33, 33, 33);
-    --light: rgb(238, 224, 224);
-    --gray: rgb(100, 100, 100);
     --typo: 'Hind Siliguri', sans-serif;
     --image: url("./background.png");
     --size-pin: 2.5rem;
@@ -25,7 +19,7 @@
 html {
     /* scroll per firefox */
     scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
+    scrollbar-color: rgb(var(--primary)) transparent;
 }
 
 /* Scroll per chrome */
@@ -41,18 +35,18 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: rgb(var(--primary));
     border-radius: 2px;
 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.0.5);
+    background: rgba(var(--dark), 0.5);
 }
 
 body {
-    background-color: var(--gray);
+    background-color: rgb(var(--gray));
 }
 
 #root {
@@ -71,14 +65,14 @@ body {
 }
 
 a {
-    color: var(--light);
+    color: rgb(var(--light));
     text-decoration: none;
 }
 
 button {
     cursor: pointer;
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: rgba(var(--primary));
+    color: rgb(var(--light));
     border-radius: 0.25rem;
     border: 0;
     outline: 0;
@@ -104,7 +98,7 @@ button svg {
 }
 
 svg {
-    color: var(--light);
+    color: rgb(var(--light));
 }
 
 /* Header */
@@ -128,7 +122,7 @@ header nav svg {
     flex-direction: column;
     margin: 1rem 0;
     padding: 1rem;
-    background-color: var(--main-color);
+    background-color: rgba(var(--main-color), 0.6);
     background-image: var(--image);
     border-radius: 0.25rem;
 }
@@ -144,9 +138,9 @@ header nav svg {
     padding: 0.75rem;
     margin: 0.5rem 0;
     line-height: var(--size-pin);
-    border: 2px dashed #000;
+    border: 2px dashed black;
     border-radius: 0.25rem;
-    color: var(--light);
+    color: rgb(var(--light));
 }
 
 .window div {
@@ -155,7 +149,7 @@ header nav svg {
 
 ul.help {
     padding: 1rem;
-    color: var(--light);
+    color: rgb(var(--light));
 
 }
 
@@ -181,8 +175,8 @@ ul.stats {
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 1rem;
-    color: var(--light);
-    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(var(--light));
+    background-color: rgba(var(--dark), 0.5);
 }
 
 .graphic {
@@ -193,7 +187,7 @@ ul.stats {
 }
 
 .text-label {
-    color: var(--light);
+    color: rgb(var(--light));
     width: 50px;
     font-size: 1.2rem;
     font-weight: bolder;
@@ -205,14 +199,14 @@ ul.stats {
     width: 100%;
     margin: 0.5rem 1rem;
     border-radius: 0.25rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(var(--dark), 0.5);
+    box-shadow: 0 4px 8px 0 rgba(var(--dark), 0.2);
 }
 
 .container-bar .bar {
     height: 30px;
     line-height: 30px;
-    background-color: var(--primary);
+    background-color: rgb(var(--primary));
     border-radius: 0.25rem;
     animation: load 2s ease-in-out forwards;
 }
@@ -239,14 +233,15 @@ ul.stats {
     line-height: calc(var(--size-pin)*1.3);
     border-radius: 50%;
     text-align: center;
-    background-color: var(--primary);
+    background-color: rgb(var(--primary));
     font-size: 20px;
 }
 
 .options ul {
     margin: 2rem;
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
 }
 
 .options li {
@@ -255,17 +250,23 @@ ul.stats {
     width: 5rem;
     height: 3rem;
     line-height: 3rem;
-    text-align: center;
-    border-radius: 1rem;
-    color: var(--light);
-    background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.2rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    color: rgb(var(--light));
+    background-color: rgba(var(--dark), 0.5);
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
 }
 
 .options li.active {
-    background-color: var(--primary);
+    background-color: rgb(var(--primary));
 }
 
+.options li:active {
+    transform: translate(0.15rem, 0.15rem);
+    transition: none;
+}
 
 /* Board */
 main {
@@ -276,7 +277,7 @@ main {
     justify-content: space-between;
     margin: 1rem 0;
     padding: 1rem;
-    background-color: var(--main-color);
+    background-color: rgba(var(--main-color), 0.6);
     background-image: var(--image);
     border-radius: 0.25rem;
 }
@@ -329,9 +330,9 @@ main ul {
 
 .attempts {
     cursor: auto;
-    color: var(--light);
-    border: 2px solid var(--dark);
-    background-color: rgba(0, 0, 0, 0.2);
+    color: rgb(var(--light));
+    border: 2px solid black;
+    background-color: rgba(var(--dark), 0.2);
     font-size: large;
     width: 3rem;
     height: 3rem;
@@ -364,8 +365,8 @@ main ul {
 .solution-hole {
     cursor: pointer;
     display: block;
-    border: 2px solid var(--dark);
-    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid black;
+    background-color: rgba(var(--dark), 0.2);
     width: var(--size-pin);
     height: var(--size-pin);
     line-height: var(--size-pin);
@@ -375,8 +376,8 @@ main ul {
 
 .answer-hole {
     display: block;
-    border: 2px solid var(--dark);
-    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid black;
+    background-color: rgba(var(--dark), 0.2);
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -400,7 +401,7 @@ main ul {
 
 .solution ul {
     padding: 0.75rem;
-    border: 2px dashed #000;
+    border: 2px dashed black;
     border-radius: 0.25rem;
 }
 
