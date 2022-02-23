@@ -39,8 +39,17 @@ const Help = () => {
 							<span className="answer-hole"></span>
 						</div>
 					)}
+					{index === 5 && (
+						<div>
+							<span className="answer-hole positionOk"></span>
+							<span className="answer-hole colorOk"></span>
+							<span className="answer-hole"></span>
+							<span className="answer-hole"></span>
+							<span className="answer-hole"></span>
+						</div>
+					)}
 
-					{index === 7 && (
+					{index === 8 && (
 						<button>
 							<FiRefreshCcw />
 						</button>
