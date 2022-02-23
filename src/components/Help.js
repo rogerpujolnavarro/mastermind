@@ -1,6 +1,6 @@
 // react
 import { useContext } from 'react';
-import { FiCornerDownLeft } from 'react-icons/fi';
+import { FiCornerDownLeft, FiRefreshCcw } from 'react-icons/fi';
 // contexts
 import SettingsContext from '../contexts/SettingsContext';
 // defaults
@@ -38,6 +38,12 @@ const Help = () => {
 							<span className="answer-hole"></span>
 							<span className="answer-hole"></span>
 						</div>
+					)}
+
+					{index === 7 && (
+						<button>
+							<FiRefreshCcw />
+						</button>
 					)}
 				</li>
 			))}

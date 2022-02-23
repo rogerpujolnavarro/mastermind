@@ -28,6 +28,7 @@ const helpTexts = {
 		`En blanc, els colors que hi són, però en una altra posició`,
 		`L'ordre de la solució no correspon a la de cada intent`,
 		`Es poden repetir colors`,
+		`Comença una partida nova fent clic a`,
 	],
 	es: [
 		`Encuentra la combinación de ${totalColumns} colores en ${totalAttempts} intentos`,
@@ -37,6 +38,7 @@ const helpTexts = {
 		`En blanco, los colores que hi estan, pero en otra posición`,
 		`El ordren de la solución no corresponde a la de cada intento`,
 		`Se pueden repetir colores`,
+		`Empieza una partida nueva haciendo clic en`,
 	],
 	en: [
 		`Find the combination of ${totalColumns} colors in ${totalAttempts} attempts`,
@@ -46,6 +48,7 @@ const helpTexts = {
 		`In white, colors that are there, but in a different position`,
 		`The order of the solution doesn't match with each attempt`,
 		`Colors can be repeated`,
+		`Start a new game by clicking on`,
 	],
 };
 
