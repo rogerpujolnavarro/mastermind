@@ -20,6 +20,7 @@ const helpTexts = {
 		`En negre, els colors en la posició correcte`,
 		`En blanc, els colors que hi són, però en una altra posició`,
 		`L'ordre de la solució no correspon a la de cada intent`,
+		`Es poden repetir colors`,
 	],
 	es: [
 		`Encuentra la combinación de ${totalColumns} colores en ${totalAttempts} intentos`,
@@ -28,6 +29,7 @@ const helpTexts = {
 		`En negro, los colores en la posición correcta`,
 		`En blanco, los colores que hi estan, pero en otra posición`,
 		`El ordren de la solución no corresponde a la de cada intento`,
+		`Se pueden repetir colores`,
 	],
 	en: [
 		`Find the combination of ${totalColumns} colors in ${totalAttempts} attempts`,
@@ -36,6 +38,7 @@ const helpTexts = {
 		`In black, colors in the correct position`,
 		`In white, colors that are there, but in a different position`,
 		`The order of the solution doesn't match with each attempt`,
+		`Colors can be repeated`,
 	],
 };
 export { helpTexts, titles, statsText };

@@ -17,7 +17,7 @@ import SolutionContext from './contexts/SolutionContext';
 // defaults
 import { getLocal, saveLocal } from './defaults/functions';
 import { colors, totalAttempts, totalColumns } from './defaults/parameters';
-import { titles } from './defaults/titles';
+import { titles } from './defaults/texts';
 
 function App() {
 	// estats
