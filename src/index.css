@@ -291,6 +291,7 @@ main ul {
 
 .board {
     overflow-y: auto;
+    max-height: 60vh;
 }
 
 .row-board {
@@ -481,7 +482,7 @@ footer a:hover {
 
     .row-board ul:first-child {
         justify-content: center;
-        padding: 0 0.5rem;
+        width: 80px;
     }
 
     .pin-board {
