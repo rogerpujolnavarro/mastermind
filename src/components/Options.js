@@ -2,6 +2,8 @@
 import { useContext } from 'react';
 // contexts
 import SettingsContext from '../contexts/SettingsContext';
+// defaults
+import { optionTexts } from '../defaults/texts';
 
 const Options = () => {
 	const { language, mode, onChangeLanguage, onChangeMode } = useContext(SettingsContext);
@@ -32,13 +34,13 @@ const Options = () => {
 					className={mode.dark ? 'active' : ''}
 					onClick={() => onChangeMode({ dark: true, appearance: mode.appearance })}
 				>
-					dark
+					{optionTexts[language].dark}
 				</li>
 				<li
 					className={mode.dark ? '' : 'active'}
 					onClick={() => onChangeMode({ dark: false, appearance: mode.appearance })}
 				>
-					light
+					{optionTexts[language].light}
 				</li>
 			</ul>
 			<ul>
@@ -46,13 +48,13 @@ const Options = () => {
 					className={mode.appearance === 'vintage' ? 'active' : ''}
 					onClick={() => onChangeMode({ dark: mode.dark, appearance: 'vintage' })}
 				>
-					vintage
+					{optionTexts[language].vintage}
 				</li>
 				<li
 					className={mode.appearance === 'modern' ? 'active' : ''}
 					onClick={() => onChangeMode({ dark: mode.dark, appearance: 'modern' })}
 				>
-					modern
+					{optionTexts[language].modern}
 				</li>
 			</ul>
 		</div>

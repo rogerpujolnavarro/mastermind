@@ -12,6 +12,13 @@ const statsText = {
 	es: { games: 'Partidas', solved: 'Resueltos', unsolved: 'Fallados', attempt: 'Intento' },
 	en: { games: 'Games', solved: 'Solved', unsolved: 'Unsolved', attempt: 'Attempt' },
 };
+
+const optionTexts = {
+	ca: { dark: 'fosc', light: 'clar', vintage: 'clàssic', modern: 'modern' },
+	es: { dark: 'oscuro', light: 'claro', vintage: 'clásico', modern: 'moderno' },
+	en: { dark: 'dark', light: 'light', vintage: 'classic', modern: 'modern' },
+};
+
 const helpTexts = {
 	ca: [
 		`Troba la combinació de ${totalColumns} colors en ${totalAttempts} intents`,
@@ -41,4 +48,5 @@ const helpTexts = {
 		`Colors can be repeated`,
 	],
 };
-export { helpTexts, titles, statsText };
+
+export { helpTexts, optionTexts, titles, statsText };
