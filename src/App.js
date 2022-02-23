@@ -70,17 +70,20 @@ function App() {
 	useEffect(() => {
 		const saveStats = () => {
 			const games = getLocal('games') ? getLocal('games') : [];
-			saveLocal('games', [
-				...games,
-				{
-					attempts: attempt ? totalAttempts - attempt + 1 : totalAttempts,
-					solved: attempt ? true : false,
-				},
-			]);
+			const id = solution.toString().replaceAll(',', '');
+			!games.filter((game) => game.id === id).length &&
+				saveLocal('games', [
+					...games,
+					{
+						id: id,
+						attempts: attempt ? totalAttempts - attempt + 1 : totalAttempts,
+						solved: attempt ? true : false,
+					},
+				]);
 		};
 		saveLocal('endGame', endGame);
 		endGame && saveStats();
-	}, [attempt, endGame]);
+	}, [attempt, endGame, solution]);
 
 	useEffect(() => {
 		saveLocal('answerHoles', answerHoles);

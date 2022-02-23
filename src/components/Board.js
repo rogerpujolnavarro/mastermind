@@ -50,25 +50,21 @@ const Board = () => {
 					<div ref={boardRef}></div>
 				</div>
 				<div className="pin-board">
-					{!endGame && (
-						<>
-							<button className="attempts" disabled>
-								{totalAttempts - attempt + 1 + '⌁' + totalAttempts}
-							</button>
-							<Pins />
-							<button
-								className={`${
-									targetHoles.length ===
-										(totalAttempts - attempt + 1) * totalColumns && !endGame
-										? ''
-										: 'disabled'
-								}`}
-								onClick={onChangeAttempt}
-							>
-								<FiCornerDownLeft />
-							</button>
-						</>
-					)}
+					<button className="attempts" disabled>
+						{totalAttempts - attempt + 1 + '⌁' + totalAttempts}
+					</button>
+					<Pins />
+					<button
+						className={`${
+							targetHoles.length === (totalAttempts - attempt + 1) * totalColumns &&
+							!endGame
+								? ''
+								: 'disabled'
+						}`}
+						onClick={onChangeAttempt}
+					>
+						<FiCornerDownLeft />
+					</button>
 				</div>
 			</div>
 		</main>
