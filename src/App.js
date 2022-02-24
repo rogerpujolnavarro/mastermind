@@ -15,7 +15,13 @@ import PinContext from './contexts/PinContext';
 import SettingsContext from './contexts/SettingsContext';
 import SolutionContext from './contexts/SolutionContext';
 // defaults
-import { changeAppearance, changeColors, getLocal, saveLocal } from './defaults/functions';
+import {
+	changeAppearance,
+	changeColors,
+	configColors,
+	getLocal,
+	saveLocal,
+} from './defaults/functions';
 import { colors, totalAttempts, totalColumns } from './defaults/parameters';
 import { titles } from './defaults/texts';
 
@@ -56,6 +62,10 @@ function App() {
 	const changeMode = (newMode) => {
 		setMode(newMode);
 	};
+
+	useEffect(() => {
+		configColors(colors);
+	}, []);
 
 	useEffect(() => {
 		console.log(solution);

@@ -14,9 +14,30 @@ const statsText = {
 };
 
 const optionTexts = {
-	ca: { dark: 'fosc', light: 'clar', vintage: 'clàssic', modern: 'modern' },
-	es: { dark: 'oscuro', light: 'claro', vintage: 'clásico', modern: 'moderno' },
-	en: { dark: 'dark', light: 'light', vintage: 'classic', modern: 'modern' },
+	ca: {
+		dark: 'fosc',
+		light: 'clar',
+		vintage: 'clàssic',
+		modern: 'modern',
+		colors: 'colors',
+		pattern: 'formes',
+	},
+	es: {
+		dark: 'oscuro',
+		light: 'claro',
+		vintage: 'clásico',
+		modern: 'moderno',
+		colors: 'colores',
+		pattern: 'formas',
+	},
+	en: {
+		dark: 'dark',
+		light: 'light',
+		vintage: 'classic',
+		modern: 'modern',
+		colors: 'colors',
+		pattern: 'pattern',
+	},
 };
 
 const helpTexts = {

@@ -32,13 +32,25 @@ const Options = () => {
 			<ul>
 				<li
 					className={mode.dark ? 'active' : ''}
-					onClick={() => onChangeMode({ dark: true, appearance: mode.appearance })}
+					onClick={() =>
+						onChangeMode({
+							dark: true,
+							appearance: mode.appearance,
+							pattern: mode.pattern,
+						})
+					}
 				>
 					{optionTexts[language].dark}
 				</li>
 				<li
 					className={mode.dark ? '' : 'active'}
-					onClick={() => onChangeMode({ dark: false, appearance: mode.appearance })}
+					onClick={() =>
+						onChangeMode({
+							dark: false,
+							appearance: mode.appearance,
+							pattern: mode.pattern,
+						})
+					}
 				>
 					{optionTexts[language].light}
 				</li>
@@ -46,15 +58,53 @@ const Options = () => {
 			<ul>
 				<li
 					className={mode.appearance === 'vintage' ? 'active' : ''}
-					onClick={() => onChangeMode({ dark: mode.dark, appearance: 'vintage' })}
+					onClick={() =>
+						onChangeMode({
+							dark: mode.dark,
+							appearance: 'vintage',
+							pattern: mode.pattern,
+						})
+					}
 				>
 					{optionTexts[language].vintage}
 				</li>
 				<li
 					className={mode.appearance === 'modern' ? 'active' : ''}
-					onClick={() => onChangeMode({ dark: mode.dark, appearance: 'modern' })}
+					onClick={() =>
+						onChangeMode({
+							dark: mode.dark,
+							appearance: 'modern',
+							pattern: mode.pattern,
+						})
+					}
 				>
 					{optionTexts[language].modern}
+				</li>
+			</ul>
+			<ul>
+				<li
+					className={!mode.pattern ? 'active' : ''}
+					onClick={() =>
+						onChangeMode({
+							dark: mode.dark,
+							appearance: mode.appearance,
+							pattern: false,
+						})
+					}
+				>
+					{optionTexts[language].colors}
+				</li>
+				<li
+					className={mode.pattern ? 'active' : ''}
+					onClick={() =>
+						onChangeMode({
+							dark: mode.dark,
+							appearance: mode.appearance,
+							pattern: true,
+						})
+					}
+				>
+					{optionTexts[language].pattern}
 				</li>
 			</ul>
 		</div>

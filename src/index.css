@@ -252,7 +252,7 @@ ul.stats {
 .options ul {
     margin: 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 0.75rem;
 }
 
@@ -452,6 +452,91 @@ main ul {
         transform: rotate3d(1, 0, 0, 0deg);
         opacity: 1;
     }
+}
+
+/* Colors and patterns */
+
+.color0 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color0));
+}
+
+.color1 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color1));
+}
+
+.color2 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color2));
+}
+
+.color3 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color3));
+}
+
+.color4 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color4));
+}
+
+.color5 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color5));
+}
+
+.color6 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color6));
+}
+
+.color7 {
+    background-image: radial-gradient(circle at 100px 100px, white 40%, var(--color7));
+}
+
+.pattern0 {
+    background-color: rgb(var(--light));
+    background-image: repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%, transparent 75%, rgb(var(--primary)) 75%, rgb(var(--primary))), repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, rgb(var(--light)) 25%, rgb(var(--light)) 75%, rgb(var(--primary)) 75%, rgb(var(--primary)));
+    background-position: 0 0, 5px 5px;
+    background-size: 10px 10px;
+}
+
+.pattern1 {
+    background-color: rgb(var(--light));
+    background-image: linear-gradient(rgb(var(--primary)) 1px, transparent 1px), linear-gradient(to right, rgb(var(--primary)) 1px, rgb(var(--light)) 1px);
+    background-size: 10px 10px;
+}
+
+.pattern2 {
+    background-color: rgb(var(--light));
+    background-image: linear-gradient(135deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(225deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(315deg, rgb(var(--primary)) 25%, rgb(var(--light)) 25%);
+    background-position: 5px 0, 5px 0, 0 0, 0 0;
+    background-size: 10px 10px;
+    background-repeat: repeat;
+}
+
+.pattern3 {
+    background-color: rgb(var(--light));
+    background-image: linear-gradient(to right, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--light)) 5px, rgb(var(--light)));
+    background-size: 10px 100%;
+}
+
+.pattern4 {
+    background-color: rgb(var(--light));
+    background: repeating-linear-gradient(45deg, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--light)) 5px, rgb(var(--light)) 10px);
+}
+
+.pattern5 {
+    background-color: rgb(var(--light));
+    background-image: linear-gradient(0deg, rgb(var(--light)) 50%, rgb(var(--primary)) 50%);
+    background-size: 10px 10px;
+}
+
+.pattern6 {
+    background-color: rgb(var(--light));
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, rgb(var(--light)) 5px), repeating-linear-gradient(rgb(var(--primary)), rgb(var(--primary)));
+}
+
+.pattern7 {
+    background-color: rgb(var(--light));
+    background-image: radial-gradient(rgb(var(--primary)) 15%, transparent 16%),
+        radial-gradient(rgb(var(--primary)) 15%, transparent 16%);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
 }
 
 /* Footer */
