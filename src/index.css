@@ -489,52 +489,52 @@ main ul {
 }
 
 .pattern0 {
-    background-color: rgb(var(--light));
-    background-image: repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%, transparent 75%, rgb(var(--primary)) 75%, rgb(var(--primary))), repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, rgb(var(--light)) 25%, rgb(var(--light)) 75%, rgb(var(--primary)) 75%, rgb(var(--primary)));
+    background-color: rgb(var(--dark));
+    background-image: repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%, transparent 75%, rgb(var(--primary)) 75%, rgb(var(--primary))), repeating-linear-gradient(45deg, rgb(var(--primary)) 25%, rgb(var(--dark)) 25%, rgb(var(--dark)) 75%, rgb(var(--primary)) 75%, rgb(var(--primary)));
     background-position: 0 0, 5px 5px;
     background-size: 10px 10px;
 }
 
 .pattern1 {
-    background-color: rgb(var(--light));
-    background-image: linear-gradient(rgb(var(--primary)) 1px, transparent 1px), linear-gradient(to right, rgb(var(--primary)) 1px, rgb(var(--light)) 1px);
+    background-color: rgb(var(--dark));
+    background-image: linear-gradient(rgb(var(--primary)) 2px, transparent 2px), linear-gradient(to right, rgb(var(--primary)) 2px, rgb(var(--dark)) 2px);
     background-size: 10px 10px;
 }
 
 .pattern2 {
-    background-color: rgb(var(--light));
-    background-image: linear-gradient(135deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(225deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(315deg, rgb(var(--primary)) 25%, rgb(var(--light)) 25%);
+    background-color: rgb(var(--dark));
+    background-image: linear-gradient(135deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(225deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(45deg, rgb(var(--primary)) 25%, transparent 25%), linear-gradient(315deg, rgb(var(--primary)) 25%, rgb(var(--dark)) 25%);
     background-position: 5px 0, 5px 0, 0 0, 0 0;
     background-size: 10px 10px;
     background-repeat: repeat;
 }
 
 .pattern3 {
-    background-color: rgb(var(--light));
-    background-image: linear-gradient(to right, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--light)) 5px, rgb(var(--light)));
+    background-color: rgb(var(--dark));
+    background-image: linear-gradient(to right, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--dark)) 5px, rgb(var(--dark)));
     background-size: 10px 100%;
 }
 
 .pattern4 {
-    background-color: rgb(var(--light));
-    background: repeating-linear-gradient(45deg, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--light)) 5px, rgb(var(--light)) 10px);
+    background-color: rgb(var(--dark));
+    background: repeating-linear-gradient(45deg, rgb(var(--primary)), rgb(var(--primary)) 5px, rgb(var(--dark)) 5px, rgb(var(--dark)) 10px);
 }
 
 .pattern5 {
-    background-color: rgb(var(--light));
-    background-image: linear-gradient(0deg, rgb(var(--light)) 50%, rgb(var(--primary)) 50%);
+    background-color: rgb(var(--dark));
+    background-image: linear-gradient(0deg, rgb(var(--dark)) 50%, rgb(var(--primary)) 50%);
     background-size: 10px 10px;
 }
 
 .pattern6 {
-    background-color: rgb(var(--light));
-    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, rgb(var(--light)) 5px), repeating-linear-gradient(rgb(var(--primary)), rgb(var(--primary)));
+    background-color: rgb(var(--dark));
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, rgb(var(--dark)) 5px), repeating-linear-gradient(rgb(var(--primary)), rgb(var(--primary)));
 }
 
 .pattern7 {
-    background-color: rgb(var(--light));
-    background-image: radial-gradient(rgb(var(--primary)) 15%, transparent 16%),
-        radial-gradient(rgb(var(--primary)) 15%, transparent 16%);
+    background-color: rgb(var(--dark));
+    background-image: radial-gradient(rgb(var(--primary)) 20%, transparent 16%),
+        radial-gradient(rgb(var(--primary)) 20%, transparent 16%);
     background-size: 10px 10px;
     background-position: 0 0, 5px 5px;
 }
