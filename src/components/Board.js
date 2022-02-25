@@ -51,7 +51,9 @@ const Board = () => {
 				</div>
 				<div className="pin-board">
 					<button className="attempts" disabled>
-						{totalAttempts - attempt + 1 + '⌁' + totalAttempts}
+						{totalAttempts - attempt + 1 > totalAttempts
+							? '⌁'
+							: totalAttempts - attempt + 1 + '⌁' + totalAttempts}
 					</button>
 					<Pins />
 					<button

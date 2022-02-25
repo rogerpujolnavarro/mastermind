@@ -68,7 +68,6 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		console.log(solution);
 		saveLocal('solution', solution);
 	}, [solution]);
 
@@ -137,19 +136,23 @@ function App() {
 			.map((target) => target.color);
 
 		// taula de colors a la posició correcta
-		const positionOk = solution.filter((color, index) => color === askedColors[index]);
-
+		const indexValidated = [];
+		const positionOk = solution.filter(
+			(color, index) => color === askedColors[index] && indexValidated.push(index)
+		);
 		// elimina de la taula de preguntats els que ja tenen posició correcta
 		askedColors = askedColors.filter((color, index) => color !== solution[index]);
 
 		// taula de colors encertats sense la posició
-		let colorOk = [];
-		for (const color of solution.filter((color, index) => color !== askedColors[index])) {
-			if (askedColors.includes(color)) {
-				colorOk = [...colorOk, color];
-				askedColors[askedColors.findIndex((askedColor) => color === askedColor)] = '';
-			}
-		}
+		const colorOk = solution.filter(
+			(color, index) =>
+				!indexValidated.includes(index) &&
+				askedColors.includes(color) &&
+				askedColors.splice(
+					askedColors.findIndex((askColor) => askColor === color),
+					1
+				)
+		);
 
 		let tableAnswers = [];
 		for (let index = 0; index < positionOk.length; index++) {
