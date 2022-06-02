@@ -45,4 +45,4 @@
 developed by [rogerpujol.cat](https://rogerpujol.cat)
 
 ## License
-[LICENSE](https://github.com/rogerpujolnavarro/mastemind/blob/master/LICENSE.md)
+[LICENSE](https://github.com/rogerpujolnavarro/mastermind/blob/master/LICENSE.md)
